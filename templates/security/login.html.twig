@@ -1,0 +1,84 @@
+{% extends 'baseSecurity.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('back/assets/auth/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('back/assets/auth/css/bootstrap.min.css') }}">
+    <style>
+        root {
+            --primary: #4e73df;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('back/assets/auth/js/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="wrap d-md-flex">
+                            <div class="img" style="background-image: url('{{ asset('back/assets/auth/images/photocomposition-horizontal-online-shopping-banner-removebg.png')}}');">
+                            </div>
+                            <div class="login-wrap p-4 p-md-5">
+                                <div class="d-flex">
+                                    <div class="w-100">
+                                        <h3 class="mb-4">Sign In</h3>
+                                    </div>
+                                    <div class="w-100">
+                                        <p class="social-media d-flex justify-content-end">
+                                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                            <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <form method="post" action="#"  class="signin-form">
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+
+                                    {% if app.user %}
+                                        <div class="mb-3">
+                                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                        </div>
+                                    {% endif %}
+                                    <div class="form-group mb-3">
+                                        <label class="label" for="inputEmail">Email</label>
+                                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="xyz@example.com" autocomplete="email" required autofocus>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="label" for="password">Password</label>
+                                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="********" required>
+                                    </div>
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}"
+                                    >
+                                    <div class="form-group">
+                                        <button type="submit"  class="form-control btn btn-primary rounded submit px-3">Sign In</button>
+                                    </div>
+
+{#                                    <div class="form-group d-md-flex">#}
+{#                                        <div class="w-50 text-left">#}
+{#                                            <label class="checkbox-wrap checkbox-primary mb-0">Remember Me#}
+{#                                                <input type="checkbox" checked>#}
+{#                                                <span class="checkmark"></span>#}
+{#                                            </label>#}
+{#                                        </div>#}
+{#                                        <div class="w-50 text-md-right">#}
+{#                                            <a href="#">Forgot Password</a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+                                </form>
+                                <p class="text-center">Not a member? <a href="{{ path('app_register') }}">Sign Up</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

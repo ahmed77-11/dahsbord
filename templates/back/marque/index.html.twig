@@ -1,0 +1,51 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Liste de Categorie{% endblock %}
+
+{% block body %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Liste des Marque</h1>
+        <a href="{{ path('app_marque_new') }}" class="btn btn-primary mt-3 mb-3"><i class="fa-solid fa-plus"></i> Ajouter</a>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-5">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">La liste des Categorie</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="table-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>Marque Nom</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for marque in marques %}
+                            <tr>
+                                <td>{{ marque.id }}</td>
+                                <td>{{ marque.nom }}</td>
+                                <td>
+                                    <a href="{{ path('app_categorie_edit', {'id': marque.id}) }}" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="{{ path('app_categorie_show', {'id': marque.id}) }}" class="btn btn-success btn-sm"><i class="fa-regular fa-eye"></i></a>
+                                    {#                                    {{ include('back/categorie/_delete_form.html.twig') }}#}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td class="text-center" colspan="7">No records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+{% endblock %}

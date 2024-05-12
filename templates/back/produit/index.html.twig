@@ -1,0 +1,59 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Liste de produit{% endblock %}
+
+{% block body %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Liste de produit</h1>
+    <a href="{{ path('app_back_produit_new') }}" class="btn btn-primary mt-3 mb-3"><i class="fa-solid fa-plus"></i> Ajouter</a>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-5">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">La liste des produits</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>Reference</th>
+                            <th>Designation</th>
+                            <th>Categorie</th>
+                            <th>Marque</th>
+                            <th>Prix</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produit in produits %}
+                            <tr>
+                                <td>{{ produit.id }}</td>
+                                <td>{{ produit.reference }}</td>
+                                <td>{{ produit.designation }}</td>
+                                <td>{{ produit.categorie.getNomCateq() }}</td>
+                                <td>{{ produit.marque.getNom() }}</td>
+                                <td>{{ produit.prix }}</td>
+                                <td>
+                                    <a href="{{ path('app_back_produit_edit', {'id': produit.id}) }}" class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i></a>
+                                    <a href="{{ path('app_back_produit_show', {'id': produit.id}) }}" class="btn btn-success btn-sm"><i class="fa-regular fa-eye"></i></a>
+                                    {{ include('back/produit/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td class="text-center" colspan="7">No records found</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}

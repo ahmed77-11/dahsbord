@@ -1,0 +1,16 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Modifier Categorie{% endblock %}
+
+
+{% block body %}
+    <div class="container-fluid">
+
+        <h1>Modifier Categorie</h1>
+        <hr>
+
+        {{ include('back/categorie/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+    </div>
+{% endblock %}

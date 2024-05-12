@@ -1,0 +1,55 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Produit</h1>
+
+    <div class="card shadow mb-5">
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="row">Id</th>
+                        <td>{{ produit.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Reference</th>
+                        <td>{{ produit.reference }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Designation</th>
+                        <td>{{ produit.designation }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Categorie</th>
+                        <td>{{ produit.categorie.getNomCateg() }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Marque</th>
+                        <td>{{ produit.marque.getNom() }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Prix</th>
+                        <td>{{ produit.prix }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Images</th>
+                        <td>
+                            {% for image in produit.getImage() %}
+                                <img src="{{ asset('uploads/' ~ image.getImage()) }}" class="img-thumbnail" style="width:150px; height:150px;">
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-end mb-5" style="margin-right: 212px">
+                <a class="btn btn-success mx-4" href="{{ path('app_back_produit_edit', {'id': produit.id}) }}">Modifier</a>
+                <a class="btn btn-secondary" href="{{ path('app_back_produit_index') }}">Annuler</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

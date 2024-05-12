@@ -1,0 +1,61 @@
+{% extends 'baseSecurity.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('back/assets/auth/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('back/assets/auth/css/bootstrap.min.css') }}">
+    <style>
+        :root {
+            --primary: #4e73df;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('back/assets/auth/js/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 col-lg-10">
+                    <div class="wrap d-md-flex">
+                        <div class="img" style="background-image: url('{{ asset('back/assets/auth/images/photocomposition-horizontal-online-shopping-banner-removebg.png')}}');">
+                        </div>
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="mb-0">Sign Up</h3>
+                            </div>
+
+                            {% if form_errors(registrationForm) %}
+                                <div class="alert alert-danger">
+                                    {{ form_errors(registrationForm) }}
+                                </div>
+                            {% endif %}
+
+                            {{ form_start(registrationForm, {'attr': {'class': 'signin-form'}}) }}
+
+                            <div class="form-group mb-3">
+                                {{ form_row(registrationForm.email, {'attr': {'placeholder': 'Email', 'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group mb-3">
+                                {{ form_row(registrationForm.username, {'attr': {'placeholder': 'Username', 'class': 'form-control'}}) }}
+                            </div>
+
+                            <div class="form-group mb-3">
+                                {{ form_row(registrationForm.plainPassword, {'label': 'Password', 'attr': {'placeholder': 'Password', 'class': 'form-control'}}) }}
+                            </div>
+
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Register</button>
+                            {{ form_end(registrationForm) }}
+                            <p class="text-center">Already Had An Account? <a href="{{ path('app_login') }}">Sign In</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

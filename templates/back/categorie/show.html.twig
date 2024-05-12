@@ -1,0 +1,36 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1>Categorie</h1>
+
+        <div class="card shadow mb-5">
+            <div class="card-body">
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Id</th>
+                        <td>{{ categorie.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nom Categorie</th>
+                        <td>{{ categorie.nomCateq }}</td>
+                    </tr>
+                        <th scope="row">Image</th>
+                        <td>
+                            <img src="{{ asset('uploads/' ~ categorie.catImg()) }}" class="img-thumbnail" style="width:150px; height:150px;">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-end mb-5" style="margin-right: 212px">
+                    <a class="btn btn-success mx-4" href="{{ path('app_categorie_show', {'id': categorie.id}) }}">Modifier</a>
+                    <a class="btn btn-secondary" href="{{ path('app_back_produit_index') }}">Retour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

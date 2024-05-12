@@ -1,0 +1,25 @@
+{{ form_start(form) }}
+<div class="card shadow mb-5">
+    <div class="card-body">
+        <div class="mb-3 row">
+            <label class="col-md-2 col-form-label">Reference</label>
+            <div class="col-md-8">
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-md-2 col-form-label">Designation</label>
+            <div class="col-md-8">
+                {{ form_widget(form.marqueImg, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+
+
+        <div class="d-flex justify-content-end" style="margin-right: 212px">
+            <button class="btn btn-success mx-4"><i class="bx bx-check-double label-icon"></i> {{ button_label|default('Appliquer') }}</button>
+            <a class="btn btn-secondary" href="{{ path('app_marque_index') }}">Annuler</a>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
