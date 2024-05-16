@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Categorie</th>
-                        <td>{{ produit.categorie.getNomCateg() }}</td>
+                        <td>{{ produit.categorie.getNomCateq() }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Marque</th>
@@ -37,9 +37,8 @@
                     <tr>
                         <th scope="row">Images</th>
                         <td>
-                            {% for image in produit.getImage() %}
-                                <img src="{{ asset('uploads/' ~ image.getImage()) }}" class="img-thumbnail" style="width:150px; height:150px;">
-                            {% endfor %}
+
+                                <img src="{{ asset('uploads/' ~ produit.prodImg) }}" class="img-thumbnail" style="width:150px; height:150px;">
                         </td>
                     </tr>
                 </tbody>

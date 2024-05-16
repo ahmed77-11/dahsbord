@@ -13237,7 +13237,7 @@ newspaper:
   label: Newspaper
   search:
     terms:
-      - article
+      - produit
       - editorial
       - headline
       - journal

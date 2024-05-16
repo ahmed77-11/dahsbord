@@ -31,6 +31,7 @@ class ProduitController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $produit = new Produit();
+        $user=$this->getUser();
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
@@ -45,6 +46,7 @@ class ProduitController extends AbstractController
             $produit->setMarque($mar);
             $produit->setReference($ref);
             $produit->setDesignation($des);
+            $produit->setUser($user);
             $uploadDirectory = $this->getParameter('images_directory');
             $imgName = md5(uniqid()).'.'.$imageFiles->guessExtension();
             $imageFiles->move($uploadDirectory, $imgName);
